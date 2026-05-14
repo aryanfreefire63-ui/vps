@@ -1,0 +1,13 @@
+*.session
+*.session-journal
+prediction_state.json
+prediction_demo_test_state.json
+admin_panel_bot.session
+admin_panel_bot.session-journal
+premium_session_b64.txt
+admin_config_for_openshift.txt
+OPENSHIFT_ENV_COPY_PASTE.txt
+openshift_upload/
+openshift_upload.zip
+__pycache__/
+.env
