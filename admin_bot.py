@@ -32,10 +32,12 @@ if not BOT_TOKEN:
                 BOT_TOKEN = line.split("=", 1)[1].strip().strip('"').strip("'")
                 break
 USER_SESSION = "premium_account"
+if os.getenv("OPENSHIFT_RUNTIME") == "1":
+    USER_SESSION = "/tmp/premium_account"
 DEFAULT_CHANNEL = "@dfsdfdsfvxzz"
 JSON_URL = "https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json"
-CONFIG_PATH = Path("admin_config.json")
-STATE_PATH = Path("prediction_state.json")
+CONFIG_PATH = Path(os.getenv("ADMIN_CONFIG_PATH", "admin_config.json"))
+STATE_PATH = Path(os.getenv("PREDICTION_STATE_PATH", "prediction_state.json"))
 POLL_SECONDS = 15
 OWNER_ID = 6127830285
 
