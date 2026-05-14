@@ -39,9 +39,13 @@ def restore_text_file(env_name: str, path: str) -> None:
     print(f"Restored {path} from {env_name}")
 
 
-restore_base64_file("PREMIUM_SESSION_B64", "premium_account.session")
-restore_text_file("ADMIN_CONFIG_JSON", "admin_config.json")
-restore_text_file("PREDICTION_STATE_JSON", "prediction_state.json")
+os.environ.setdefault("OPENSHIFT_RUNTIME", "1")
+os.environ.setdefault("ADMIN_CONFIG_PATH", "/tmp/admin_config.json")
+os.environ.setdefault("PREDICTION_STATE_PATH", "/tmp/prediction_state.json")
+
+restore_base64_file("PREMIUM_SESSION_B64", "/tmp/premium_account.session")
+restore_text_file("ADMIN_CONFIG_JSON", "/tmp/admin_config.json")
+restore_text_file("PREDICTION_STATE_JSON", "/tmp/prediction_state.json")
 start_health_server()
 
 import admin_bot  # noqa: E402
